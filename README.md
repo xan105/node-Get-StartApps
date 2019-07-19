@@ -46,7 +46,7 @@ ps().then((result)=>{
 });
 ```
 
-Has GamingOverlay ? :
+Has GamingOverlay (Microsoft.Xbox**GamingOverlay**_8wekyb3d8bbwe!App) ? :
 
 ```js
 const ps = require('Get-StartApps');
@@ -65,13 +65,13 @@ API
 
 - **module.exports = async(search = {})**
 
-Parameters:
+*Parameters:*
 
-a string => equivalent of `Get-StartApps` then search all the result for matching result name or appid.
-an object {name: "xxx", id: "yyy"} =>  Use Powershell search for either matching name, appid or both.
-Nothing/Empty object => equivalent of `Get-StartApps` : List all available apps.
+- a string => equivalent of `Get-StartApps` then search all the result for matching result name or appid.
+- an object {name: "xxx", id: "yyy"} =>  **Use Powershell to search** for either matching name, appid or both.
+- Nothing/Empty object => equivalent of `Get-StartApps` : List all available apps.
 
-Returns:
+*Returns:*
 
 An array of object :
 
@@ -83,7 +83,7 @@ An array of object :
 On error returns an empty array.
 
 
-Example:
+*Example:*
 ```js
 const ps = require('Get-StartApps');
 
@@ -97,19 +97,19 @@ await ps(); //nothing list all
 
 - **module.exports.has = async(search = {})**
 
-Parameters:
+*Parameters:*
 
-a string => equivalent of `Get-StartApps` then search all the result for matching result name or appid.
-an object {name: "xxx", id: "yyy"} =>  Use Powershell search for either matching name, appid or both.
+- a string => equivalent of `Get-StartApps` then search all the result for matching result name or appid.
+- an object {name: "xxx", id: "yyy"} =>  **Use Powershell to search** for either matching name, appid or both.
 
-Returns:
+*Returns:*
 
 Bool true/false
 
 On error or unvalid parameters returns false.
 
 
-Example:
+*Example:*
 ```js
 
 const ps = require('Get-StartApps');
