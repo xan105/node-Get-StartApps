@@ -1,5 +1,5 @@
 {
-  "name": "Get-StartApps",
+  "name": "get-startapps",
   "version": "1.0.0",
   "description": "Dependency-free promise based wrapper for the Powershell Get-StartApps command.",
   "main": "Get-StartApps.js",
