@@ -8,7 +8,7 @@ Install & Usage example
 Look for all the Xbox app :
 
 ```js
-const ps = require('Get-StartApps');
+const ps = require('get-startapps');
 
 ps("Xbox").then((result)=>{
 
@@ -29,7 +29,7 @@ ps("Xbox").then((result)=>{
 List them all :
 
 ```js
-const ps = require('Get-StartApps');
+const ps = require('get-startapps');
 
 ps().then((result)=>{
 
@@ -49,7 +49,7 @@ ps().then((result)=>{
 Has GamingOverlay (Microsoft.Xbox**GamingOverlay**_8wekyb3d8bbwe!App) ? :
 
 ```js
-const ps = require('Get-StartApps');
+const ps = require('get-startapps');
 
 ps.has({id:"GamingOverlay"}).then((result)=>{
 
@@ -85,7 +85,7 @@ On error returns an empty array.
 
 *Example:*
 ```js
-const ps = require('Get-StartApps');
+const ps = require('get-startapps');
 
 await ps("Xbox"); //string
 await ps({name:"Game Bar",id:"GamingOverlay"}); //object both properties
@@ -112,7 +112,7 @@ On error or unvalid parameters returns false.
 *Example:*
 ```js
 
-const ps = require('Get-StartApps');
+const ps = require('get-startapps');
 
 await ps.has("Xbox"); //string
 await ps.has({id:"GamingOverlay", name: "Game Bar"}); //object both properties
