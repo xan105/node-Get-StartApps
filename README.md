@@ -60,10 +60,18 @@ ps.has({id:"GamingOverlay"}).then((result)=>{
 });
 ```
 
+Is "Microsoft.WindowsStore_8wekyb3d8bbwe!App" a valid **UWP** Application User Model ID ?
+
+```js
+const { isValidAUMID } = require('get-startapps');
+
+console.log(isValidAUMID("Microsoft.WindowsStore_8wekyb3d8bbwe!App")); //true 
+```
+
 API
 ---
 
-- **async(string||object search = {}) array[{},...]** _(default)_
+- _(default)_ **async(string||object search = {}) array[{},...]**
 
 *Parameters:*
 
