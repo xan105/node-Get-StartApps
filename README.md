@@ -3,7 +3,7 @@ Dependency-free promise based wrapper for the Powershell Get-StartApps command.
 Install & Usage example
 -----------------------
 
-```$ npm install get-startapps```
+```npm install get-startapps```
 
 Look for all the Xbox app :
 
