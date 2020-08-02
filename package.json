@@ -1,23 +1,42 @@
 {
   "name": "get-startapps",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dependency-free promise based wrapper for the Powershell Get-StartApps command.",
-  "main": "Get-StartApps.js",
+  "type": "module",
+  "main": "index.cjs",
+  "exports": {
+    "import": "./esm.mjs",
+    "require": "./index.cjs"
+  },
+  "os": [
+    "win32"
+  ], 
+  "engines": {
+    "node": ">=0.12"
+  },
   "scripts": {
-    "start": "node Get-StartApps.js",
-    "test": "node test.js"
+    "lint": "npx eslint --ignore-path .gitignore ./**/*.{cjs,mjs}"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xan105/node-Get-StartApps.git"
   },
   "keywords": [
-    "Get-StartApps", "PowerShell", "windows"
+    "Get-StartApps",
+    "PowerShell",
+    "windows"
   ],
-  "author": "Anthony Beaumont",
+  "author": {
+    "name": "Anthony Beaumont",
+    "email": "dev.xan105@outlook.be",
+    "url": "https://xan105.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xan105/node-Get-StartApps/issues"
   },
-  "homepage": "https://github.com/xan105/node-Get-StartApps#readme"
+  "homepage": "https://github.com/xan105/node-Get-StartApps#readme",
+  "devDependencies": {
+    "eslint": "^7.6.0"
+  }
 }

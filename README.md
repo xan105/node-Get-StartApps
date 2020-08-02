@@ -63,7 +63,7 @@ ps.has({id:"GamingOverlay"}).then((result)=>{
 API
 ---
 
-- **module.exports = async(search = {})**
+- **async(string||object search = {}) array[{},...]** _(default)_
 
 *Parameters:*
 
@@ -80,7 +80,7 @@ An array of object :
     appid: '' }, ... ]
 ```
 
-On error returns an empty array.
+> On error returns an empty array.
 
 
 *Example:*
@@ -95,7 +95,7 @@ await ps(); //nothing list all
 
 ```
 
-- **module.exports.has = async(search = {})**
+- **has = async(string||object search = {}) bol**
 
 *Parameters:*
 
@@ -104,9 +104,9 @@ await ps(); //nothing list all
 
 *Returns:*
 
-Bool true/false
+true/false
 
-On error or unvalid parameters returns false.
+> On error or unvalid parameters returns false.
 
 
 *Example:*
@@ -120,3 +120,23 @@ await ps.has({id:"GamingOverlay"}); //object by name only
 await ps.has({name:"Game Bar"}); //object by id only
 
 ```
+
+- **isValidAUMID = (string appID) bol**
+  
+  Check if appID is a valid **UWP** Application User Model ID.
+  
+  *Returns:*
+
+  true/false
+  
+  > Error if appID isn't a string.
+   
+*Example:*
+
+  ```js
+  const { isValidAUMID } = require('get-startapps');
+  
+  console.log(isValidAUMID("Microsoft.WindowsStore_8wekyb3d8bbwe!App")); //true
+  console.log(isValidAUMID("com.squirrel.GitHubDesktop.GitHubDesktop")); //false
+  
+  ```
