@@ -131,13 +131,13 @@ await ps.has({name:"Game Bar"}); //object by id only
 
 - **isValidAUMID = (string appID) bol**
   
-  Check if appID is a valid **UWP** Application User Model ID.
+Check if appID is a valid **UWP** Application User Model ID.
   
-  *Returns:*
+*Returns:*
 
-  true/false
+true/false
   
-  > Error if appID isn't a string.
+> Error if appID isn't a string.
    
 *Example:*
 
