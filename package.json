@@ -1,6 +1,6 @@
 {
   "name": "get-startapps",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dependency-free promise based wrapper for the Powershell Get-StartApps command.",
   "type": "module",
   "main": "index.cjs",
