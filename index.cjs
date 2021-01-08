@@ -38,10 +38,11 @@ module.exports = async(search = {}) => { //search by string or {name: , id:}
       
       const result = output.map((line) => { 
         
-        let col = line.split("\r\n");
+        let col = line.trim().split("\r\n");
+        const getValue = (string) => string.substring(string.indexOf(":") + 1, string.length).trim();
         return {
-          name: col[0].replace("Name  :",""),
-          appid: col[1].replace("AppID :","")
+          name: getValue(col[0]),
+          appid: getValue(col[1])
         }
         
       });
