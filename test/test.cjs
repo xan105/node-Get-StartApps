@@ -1,6 +1,6 @@
 "use strict";
 
-const apps = require("../index.cjs");
+const apps = require("../lib/index.cjs");
 
 (async() => {
   

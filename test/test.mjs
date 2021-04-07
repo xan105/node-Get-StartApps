@@ -1,4 +1,4 @@
-import apps from '../esm.mjs';
+import apps from '../lib/esm.mjs';
 
 (async() => {
   

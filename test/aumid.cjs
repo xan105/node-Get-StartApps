@@ -1,6 +1,6 @@
 'use strict';
 
-const apps = require('../index.cjs');
+const apps = require('../lib/index.cjs');
 
 const code = {
   reset : "\x1b[0m",
