@@ -1,7 +1,7 @@
 About
 =====
 
-Wrapper for the Powershell Get-StartApps command.
+Wrapper for the PowerShell Get-StartApps command.
 
 Examples
 ========
@@ -9,7 +9,7 @@ Examples
 Get every apps:
 
 ```js
-import getapps from "get-startapps";
+import getapps, { isValidAUMID } from "get-startapps";
 
 const apps = await getapps();
 /* OUTPUT

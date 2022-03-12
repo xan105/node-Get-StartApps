@@ -1,25 +1,18 @@
 {
   "name": "get-startapps",
-  "version": "1.0.4",
-  "description": "Dependency-free promise based wrapper for the Powershell Get-StartApps command.",
+  "version": "2.0.0",
+  "description": "Wrapper for the PowerShell Get-StartApps command.",
   "type": "module",
-  "main": "./lib/index.cjs",
-  "exports": {
-    "import": "./lib/esm.mjs",
-    "require": "./lib/index.cjs"
-  },
+  "exports": "./lib/index.js",
+  "types": "./types/index.d.ts",
   "os": [
     "win32"
-  ], 
+  ],
   "engines": {
-    "node": ">=0.12"
+    "node": ">=16.0.0"
   },
   "scripts": {
-    "lint": "npx eslint --ignore-path .gitignore ./**/*.{cjs,mjs}"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xan105/node-Get-StartApps.git"
+    "lint": "npx eslint --ignore-path .gitignore ./**/*.{js,mjs}"
   },
   "keywords": [
     "Get-StartApps",
@@ -33,11 +26,19 @@
     "url": "https://xan105.com/"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xan105/node-Get-StartApps.git"
+  },
   "bugs": {
     "url": "https://github.com/xan105/node-Get-StartApps/issues"
   },
   "homepage": "https://github.com/xan105/node-Get-StartApps#readme",
   "devDependencies": {
-    "eslint": "^7.6.0"
+    "eslint": "^8.11.0"
+  },
+  "dependencies": {
+    "@xan105/error": "^1.2.0",
+    "@xan105/is": "^2.4.0"
   }
 }
