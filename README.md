@@ -1,150 +1,128 @@
-Dependency-free promise based wrapper for the Powershell Get-StartApps command.
+About
+=====
 
-Install & Usage example
------------------------
+Wrapper for the Powershell Get-StartApps command.
 
-```npm install get-startapps```
+Examples
+========
 
-Look for all the Xbox app :
+Get every apps:
 
 ```js
-const ps = require('get-startapps');
+import getapps from "get-startapps";
 
-ps("Xbox").then((result)=>{
+const apps = await getapps();
+/* OUTPUT
+[ 
+  { 
+    name: '...',
+    appID: '...' 
+  },
+  ... 
+] 
+*/
 
-  console.log(result);
-  
-  /* OUTPUT
-[ { name: ' Xbox Game Bar',
-    appid: ' Microsoft.XboxGamingOverlay_8wekyb3d8bbwe!App' },
-  { name: ' Xbox Console Companion',
-    appid: ' Microsoft.XboxApp_8wekyb3d8bbwe!Microsoft.XboxApp' } ] 
-  */
-
-}).catch((err)=>{
-  console.error(err);
-});
+//Keep only UWP apps
+const UWP = apps.filter(app => isValidAUMID(app.appID))
 ```
 
-List them all :
+Search:
 
 ```js
-const ps = require('get-startapps');
+import getapps from "get-startapps";
 
-ps().then((result)=>{
-
-  console.log(result);
-  
-  /* OUTPUT
- [{ name: ' Google Chrome', appid: ' Chrome' },
-  { name: ' GitHub Desktop', appid: ' com.squirrel.GitHubDesktop.GitHubDesktop' }, 
-      ... 335 more items ]
-  */
-
-}).catch((err)=>{
-  console.error(err);
-});
+await getapps("Xbox");
+await getapps({name: "Xbox"}); //search by name only
+await getapps({appID: "Xbox"}); //search by appID only
+await getapps({name: "Xbox", appID:"GamingOverlay"}) //search by name and appID
 ```
 
 Has GamingOverlay (Microsoft.Xbox**GamingOverlay**_8wekyb3d8bbwe!App) ? :
 
 ```js
-const ps = require('get-startapps');
-
-ps.has({id:"GamingOverlay"}).then((result)=>{
-
-  console.log(result); // true or false
-
-}).catch((err)=>{
-  console.error(err);
-});
+import { has } from "get-startapps";
+has({id:"GamingOverlay"}) //true or false
 ```
 
 Is "Microsoft.WindowsStore_8wekyb3d8bbwe!App" a valid **UWP** Application User Model ID ?
 
 ```js
-const { isValidAUMID } = require('get-startapps');
+import { isValidAUMID } from "get-startapps";
+isValidAUMID("Microsoft.WindowsStore_8wekyb3d8bbwe!App")); //true 
+```
 
-console.log(isValidAUMID("Microsoft.WindowsStore_8wekyb3d8bbwe!App")); //true 
+Installation
+============
+
+```
+npm install get-startapps
 ```
 
 API
----
+===
 
-- _(default)_ **async(string||object search = {}) array[{},...]**
+⚠️ This module is only available as an ECMAScript module (ESM) starting with version 2.0.0.<br />
+Previous version(s) are CommonJS (CJS) with an ESM wrapper.
 
-*Parameters:*
+## Default export
 
-- a string => equivalent of `Get-StartApps` then search all the result for matching result name or appid.
-- an object {name: "xxx", id: "yyy"} =>  **Use Powershell to search** for either matching name, appid or both.
-- Nothing/Empty object => equivalent of `Get-StartApps` : List all available apps.
+#### `(search?: string | object): Promise<obj[]>`
 
-*Returns:*
+Invok Get-StartApps with an optional search.
 
-An array of object :
+if `search` is 
+- a string this is eq to `Get-StartApps %search%`
+- an object `{name?: string, appID?: string}` then search for either matching name, appid or both.
+- omitted/empty object this is eq to `Get-StartApps` and it will list all available apps.
 
+Returns an array of object :
+
+```ts
+[{ 
+  name: string,
+  appID: string 
+}]
 ```
-[  { name: '',
-    appid: '' }, ... ]
-```
 
-> On error returns an empty array.
+Example:
 
-
-*Example:*
 ```js
-const ps = require('get-startapps');
+import getapps from "get-startapps";
 
-await ps("Xbox"); //string
-await ps({name:"Game Bar",id:"GamingOverlay"}); //object both properties
-await ps({name:"Microsoft"}); //object by name only
-await ps({id:"Xbox"}); //object by id only
-await ps(); //nothing list all
-
+await getapps("Xbox");
+await getapps({name:"Game Bar",id:"GamingOverlay"}); //both properties
+await getapps({name:"Microsoft"}); //by name only
+await getapps({id:"Xbox"}); //by id only
+await getapps(); //list all
 ```
 
-- **has = async(string||object search = {}) bol**
+## Named export
 
-*Parameters:*
+#### `has(search: string | object): Promise<boolean>`
 
-- a string => equivalent of `Get-StartApps` then search all the result for matching result name or appid.
-- an object {name: "xxx", id: "yyy"} =>  **Use Powershell to search** for either matching name, appid or both.
+Like default export but return a boolean if found or not.<br/>
+A valid search paramater (not empty) is required.
 
-*Returns:*
+Example:
 
-true/false
-
-> On error or unvalid parameters returns false.
-
-
-*Example:*
 ```js
+import { has } from "get-startapps";
 
-const ps = require('get-startapps');
-
-await ps.has("Xbox"); //string
-await ps.has({id:"GamingOverlay", name: "Game Bar"}); //object both properties
-await ps.has({id:"GamingOverlay"}); //object by name only
-await ps.has({name:"Game Bar"}); //object by id only
-
+await has("Xbox");
+await has({id:"GamingOverlay", name: "Game Bar"}); //both properties
+await has({id:"GamingOverlay"}); //by name only
+await has({name:"Game Bar"}); //by id only
 ```
 
-- **isValidAUMID = (string appID) bol**
+#### `isValidAUMID(appID: string): boolean`
   
 Check if appID is a valid **UWP** Application User Model ID.
-  
-*Returns:*
-
-true/false
-  
-> Error if appID isn't a string.
    
-*Example:*
+Example:
 
-  ```js
-  const { isValidAUMID } = require('get-startapps');
+```js
+import { isValidAUMID } from "get-startapps";
   
-  console.log(isValidAUMID("Microsoft.WindowsStore_8wekyb3d8bbwe!App")); //true
-  console.log(isValidAUMID("com.squirrel.GitHubDesktop.GitHubDesktop")); //false
-  
-  ```
+isValidAUMID("Microsoft.WindowsStore_8wekyb3d8bbwe!App")); //true
+isValidAUMID("com.squirrel.GitHubDesktop.GitHubDesktop")); //false
+```
