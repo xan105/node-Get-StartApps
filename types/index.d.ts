@@ -8,6 +8,6 @@ declare interface IOption{
   appID?: string
 }
 
-export default getStartApps(search?: string | IOption): Promise<IStartApp[]>;
-export has(search: string | IOption): Promise<boolean>;
-export isValidAUMID(appID: string): boolean;
+export default function getStartApps(search?: string | IOption): Promise<IStartApp[]>;
+export function has(search: string | IOption): Promise<boolean>;
+export function isValidAUMID(appID: string): boolean;

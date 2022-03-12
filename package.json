@@ -1,6 +1,6 @@
 {
   "name": "get-startapps",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Wrapper for the PowerShell Get-StartApps command.",
   "type": "module",
   "exports": "./lib/index.js",
