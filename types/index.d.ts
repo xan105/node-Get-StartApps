@@ -1,9 +1,9 @@
-declare IStartApp{
+declare interface IStartApp{
   name: string,
   appID: string
 }
 
-declare IOption{
+declare interface IOption{
   name?: string,
   appID?: string
 }
